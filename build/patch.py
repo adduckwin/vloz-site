@@ -217,6 +217,10 @@ CSS3 = """
 rep('</style>', CSS3, 'css3')
 
 TOPUI = '''<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KS3V5PKD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="grain"></div>
 <div class="progress"></div>
 <nav class="secnav" aria-hidden="true">
@@ -449,14 +453,13 @@ ym(109550359,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109550359" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag("js",new Date());
-gtag("config","G-XXXXXXXXXX");  /* <-- ваш Measurement ID Google Analytics */
-</script>
-<!-- /Google tag -->'''
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KS3V5PKD');</script>
+<!-- End Google Tag Manager -->'''
 rep('</head>', ANALYTICS + '\n</head>', 'analytics')
 
 # ---------- SEO ----------
