@@ -47,9 +47,16 @@ footer{border-top:1px solid var(--line);margin-top:70px;}
 .bloghero p{font-size:18px;color:var(--ink2);max-width:60ch;}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:30px;}
 @media(max-width:760px){.grid{grid-template-columns:1fr;}}
-.post{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.post{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;background:linear-gradient(165deg,#fffdf8 0%,#f6efe1 100%);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;}
 .post:hover{transform:translateY(-5px);box-shadow:0 24px 50px -34px rgba(40,20,8,.35);border-color:var(--acc);}
-.post .cat{font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);}
+.post>*{position:relative;z-index:1;}
+.post .rings{position:absolute;z-index:0;right:-52px;bottom:-52px;width:200px;height:200px;opacity:.08;pointer-events:none;transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1);}
+.post .rings circle{fill:none;stroke:var(--acc);stroke-width:2.5;}
+.post:hover .rings{opacity:.2;transform:rotate(-24deg) scale(1.07);}
+.post .idx{position:absolute;z-index:0;left:16px;bottom:-6px;font-family:var(--disp);font-weight:800;font-size:108px;line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--acc);opacity:.07;pointer-events:none;transition:opacity .45s ease;}
+.post:hover .idx{opacity:.15;}
+.post .cat{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);}
+.post .cat:before{content:"✦";color:var(--acc);font-size:11px;}
 .post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
 .post p{font-size:14.5px;color:var(--ink2);flex:1;}
 .post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
@@ -156,36 +163,48 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 </div></section>
 <div class="wrap"><div class="grid">
 <a class="post" href="/vloz-site/blog/kak-sostavit-menyu-kofejni/">
+<span class="idx" aria-hidden="true">01</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-kak-sostavit-menyu-kofejni.jpg" alt="Как составить меню для кофейни: пошаговый гайд" loading="lazy">
 <span class="cat">Меню</span>
 <h2>Как составить меню для кофейни: пошаговый гайд</h2>
 <p>Пошагово: с чего начать, как собрать структуру меню кофейни, сколько позиций нужно, как посчитать экономику каждой и не уйти в минус.</p>
 <div class="meta">7 мин чтения</div>
 </a><a class="post" href="/vloz-site/blog/sebestoimost-napitka/">
+<span class="idx" aria-hidden="true">02</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-sebestoimost-napitka.jpg" alt="Как рассчитать себестоимость напитка в кофейне" loading="lazy">
 <span class="cat">Экономика</span>
 <h2>Как рассчитать себестоимость напитка в кофейне</h2>
 <p>Формула себестоимости напитка, разбор на примере капучино с цифрами, нормальный фудкост и как не уйти в минус на сезонных позициях.</p>
 <div class="meta">6 мин чтения</div>
 </a><a class="post" href="/vloz-site/blog/sezonnoe-menyu/">
+<span class="idx" aria-hidden="true">03</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-sezonnoe-menyu.jpg" alt="Сезонное меню для кофейни: зачем и как обновлять" loading="lazy">
 <span class="cat">Меню</span>
 <h2>Сезонное меню для кофейни: зачем и как обновлять</h2>
 <p>Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.</p>
 <div class="meta">5 мин чтения</div>
 </a><a class="post" href="/vloz-site/blog/avtorskie-napitki-idei/">
+<span class="idx" aria-hidden="true">04</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-avtorskie-napitki-idei.jpg" alt="Идеи авторских напитков для кофейни по сезонам" loading="lazy">
 <span class="cat">Идеи</span>
 <h2>Идеи авторских напитков для кофейни по сезонам</h2>
 <p>Что делает напиток авторским, концепты под весну, лето, осень и зиму, как адаптировать идею под себестоимость и придумать название.</p>
 <div class="meta">6 мин чтения</div>
 </a><a class="post" href="/vloz-site/blog/tehnologicheskaya-karta/">
+<span class="idx" aria-hidden="true">05</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-tehnologicheskaya-karta.jpg" alt="Технологическая карта на напиток: что это и как составить" loading="lazy">
 <span class="cat">Документы</span>
 <h2>Технологическая карта на напиток: что это и как составить</h2>
 <p>Зачем нужна ТТК на напиток, что в ней должно быть, чем отличается от рецепта, готовый шаблон и как внедрить в смену.</p>
 <div class="meta">5 мин чтения</div>
 </a><a class="post" href="/vloz-site/blog/srednij-chek-kofejni/">
+<span class="idx" aria-hidden="true">06</span>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
 <img class="thumb" src="/vloz-site/blog/cover-srednij-chek-kofejni.jpg" alt="Как поднять средний чек в кофейне через меню" loading="lazy">
 <span class="cat">Экономика</span>
 <h2>Как поднять средний чек в кофейне через меню</h2>
