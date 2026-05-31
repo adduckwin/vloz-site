@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru" data-season="autumn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Сезон — студия меню для кофеен</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f1e8; --bg2:#efe8da; --card:#fffdf8; --ink:#171310; --ink2:#4c453b; --soft:#857a6a; --line:#e6dcc9;
+  --acc:#ff5a1f; --acc-soft:#ffe2d3; --acc-ink:#2a0e02;
+  --disp:'Bricolage Grotesque',sans-serif; --body:'Hanken Grotesk',system-ui,sans-serif;
+}
+html[data-season="winter"]{--acc:#2f6cf0;--acc-soft:#dde8ff;--acc-ink:#06112e;}
+html[data-season="spring"]{--acc:#1ba35b;--acc-soft:#d5f2e0;--acc-ink:#04220f;}
+html[data-season="summer"]{--acc:#f2a00c;--acc-soft:#ffeec5;--acc-ink:#2c1d00;}
+html[data-season="autumn"]{--acc:#ff5a1f;--acc-soft:#ffe2d3;--acc-ink:#2a0e02;}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px;}
+section{padding:clamp(60px,8vw,116px) 0;position:relative;}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);transition:color .5s;}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--acc);border-radius:2px;transition:background .5s;}
+h2{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5vw,58px);line-height:1.0;letter-spacing:-.025em;margin:14px 0 18px;}
+.lead{font-size:clamp(16px,1.7vw,19px);color:var(--ink2);max-width:58ch;line-height:1.55;}
+.squiggle{display:inline-block;position:relative;white-space:nowrap;}
+.squiggle svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.36em;overflow:visible;}
+.squiggle path{stroke:var(--acc);stroke-width:7;fill:none;stroke-linecap:round;transition:stroke .5s;}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:700;font-size:15.5px;padding:15px 28px;border-radius:99px;cursor:pointer;text-decoration:none;border:2px solid var(--ink);transition:transform .25s,background .25s,color .25s,box-shadow .25s;}
+.btn-acc{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);}
+.btn-acc:hover{transform:translateY(-3px);box-shadow:0 12px 24px -10px var(--acc);}
+.btn-line{background:transparent;color:var(--ink);}
+.btn-line:hover{background:var(--ink);color:var(--bg);transform:translateY(-3px);}
+.btn svg{width:18px;height:18px;}
+
+.sticker{display:inline-flex;align-items:center;gap:7px;font-family:var(--body);font-weight:700;font-size:12.5px;background:var(--acc-soft);color:var(--acc-ink);padding:7px 14px;border-radius:99px;transform:rotate(-3deg);transition:background .5s,color .5s;}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:9px 16px;font-size:13.5px;font-weight:600;}
+.chip b{font-family:var(--disp);font-weight:700;color:var(--acc);transition:color .5s;}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:200;background:rgba(245,241,232,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px;}
+.brand{font-family:var(--disp);font-weight:800;font-size:25px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;}
+.brand .o{width:17px;height:17px;border-radius:50%;background:var(--acc);position:relative;transition:background .5s;}
+.brand .o:after{content:"";position:absolute;inset:5px 2px;background:var(--bg);border-radius:50%;}
+.seasons{display:flex;gap:5px;background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:5px;}
+.seasons button{border:none;background:transparent;cursor:pointer;font-family:var(--body);font-weight:700;font-size:13px;color:var(--soft);padding:7px 13px;border-radius:99px;transition:.2s;display:flex;align-items:center;gap:6px;}
+.seasons button .d{width:9px;height:9px;border-radius:50%;}
+.seasons button[data-s=winter] .d{background:#2f6cf0;}.seasons button[data-s=spring] .d{background:#1ba35b;}
+.seasons button[data-s=summer] .d{background:#f2a00c;}.seasons button[data-s=autumn] .d{background:#ff5a1f;}
+.seasons button.on{background:var(--ink);color:var(--bg);}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--acc);color:var(--acc-ink);padding:11px 18px;border-radius:99px;font-weight:700;font-size:14px;text-decoration:none;transition:background .5s,transform .2s;}
+.nav-cta:hover{transform:translateY(-2px);}
+@media(max-width:880px){.seasons button span{display:none;}.seasons button{padding:8px;}}
+@media(max-width:540px){.nav-cta span{display:none;}}
+
+/* HERO */
+.hero{padding-top:clamp(36px,5vw,66px);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(42px,7.2vw,88px);line-height:.95;letter-spacing:-.035em;margin:20px 0 0;}
+.hero h1 .l{display:block;overflow:hidden;}
+.hero h1 .l span{display:block;transform:translateY(110%);}
+.loaded .hero h1 .l span{animation:up .85s cubic-bezier(.2,.8,.2,1) forwards;}
+.hero h1 .l:nth-child(2) span{animation-delay:.08s;}.hero h1 .l:nth-child(3) span{animation-delay:.16s;}
+@keyframes up{to{transform:translateY(0);}}
+.hero .lead{margin:26px 0 30px;opacity:0;animation:fade .9s ease .45s forwards;}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;opacity:0;animation:fade .9s ease .58s forwards;}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;opacity:0;animation:fade .9s ease .72s forwards;}
+@keyframes fade{to{opacity:1;}}
+.hero-art{position:relative;}
+.hero-art .frame{position:relative;aspect-ratio:4/5;border-radius:230px 230px 28px 28px;overflow:hidden;border:1.5px solid var(--line);z-index:2;box-shadow:0 30px 60px -34px rgba(40,20,8,.4);}
+.hero-art .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-art .blob{position:absolute;width:78%;aspect-ratio:1;background:var(--acc);border-radius:50%;right:-7%;bottom:-7%;z-index:1;transition:background .5s;}
+.hero-art .tag{position:absolute;top:18px;left:-14px;z-index:3;font-size:13.5px;box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+.hero-art .note{position:absolute;bottom:22px;right:-12px;z-index:3;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:11px 15px;font-size:12.5px;font-weight:600;transform:rotate(3deg);box-shadow:0 10px 24px -12px rgba(0,0,0,.25);}
+.hero-art .note b{font-family:var(--disp);color:var(--acc);transition:color .5s;}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:30px;}.hero-art{max-width:380px;margin:0 auto;}}
+
+/* MARQUEE */
+.marq{background:var(--ink);color:var(--bg);padding:15px 0;overflow:hidden;white-space:nowrap;}
+.marq .t{display:inline-block;animation:scroll 28s linear infinite;}
+.marq span{font-family:var(--disp);font-weight:600;font-size:clamp(17px,2.2vw,24px);padding:0 6px;}
+.marq .s{color:var(--acc);transition:color .5s;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+
+/* PROBLEM (tint block) */
+.prob{background:var(--acc-soft);transition:background .5s;}
+.prob-grid{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.pcard{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:24px;transition:transform .3s;}
+.pcard:hover{transform:translateY(-4px);}
+.pcard .i{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--acc);transition:color .5s;}
+.pcard p{margin-top:10px;font-size:15px;color:var(--ink2);line-height:1.5;}
+@media(max-width:780px){.prob-grid{grid-template-columns:1fr;}}
+
+/* PRODUCTS */
+.prod-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.prod{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:34px;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s;position:relative;}
+.prod:hover{transform:translateY(-6px);box-shadow:0 28px 56px -34px rgba(40,20,8,.35);}
+.prod.feature{border-color:var(--acc);border-width:2px;}
+.prod .pstick{position:absolute;top:-13px;right:24px;}
+.prod .tag{font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);}
+.prod h3{font-family:var(--disp);font-weight:700;font-size:30px;margin:8px 0 4px;letter-spacing:-.02em;}
+.prod .who{font-size:13.5px;color:var(--soft);}
+.prod .price{font-family:var(--disp);font-weight:700;font-size:40px;margin:20px 0 2px;letter-spacing:-.02em;}
+.prod .price small{font-family:var(--body);font-size:14px;font-weight:600;color:var(--soft);}
+.prod ul{list-style:none;margin:18px 0 26px;}
+.prod ul li{position:relative;padding:9px 0 9px 28px;font-size:14.5px;border-top:1px solid var(--line);}
+.prod ul li:before{content:"";position:absolute;left:2px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--acc-soft);border:2px solid var(--acc);transition:.5s;}
+.prod .btn{margin-top:auto;justify-content:center;}
+@media(max-width:720px){.prod-grid{grid-template-columns:1fr;}}
+
+/* DELIVERABLES */
+.deliv-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.dcard{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:28px;transition:transform .3s,border-color .3s;}
+.dcard:hover{transform:translateY(-5px);border-color:var(--acc);}
+.dcard .n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--acc-soft);color:var(--acc-ink);font-family:var(--disp);font-weight:700;font-size:16px;transition:.5s;}
+.dcard h4{font-family:var(--disp);font-weight:700;font-size:20px;margin:14px 0 7px;letter-spacing:-.01em;}
+.dcard p{font-size:13.5px;color:var(--soft);line-height:1.5;}
+@media(max-width:780px){.deliv-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.deliv-grid{grid-template-columns:1fr;}}
+
+/* PROCESS */
+.steps{margin-top:42px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{position:relative;}
+.step .sn{font-family:var(--disp);font-weight:800;font-size:54px;color:var(--acc);line-height:1;letter-spacing:-.04em;transition:color .5s;-webkit-text-stroke:0;}
+.step h4{font-family:var(--disp);font-weight:700;font-size:19px;margin:8px 0 7px;}
+.step p{font-size:13.5px;color:var(--ink2);line-height:1.5;}
+.step .chip{margin-top:10px;background:var(--acc);color:var(--acc-ink);border:none;font-weight:700;transition:background .5s;}
+@media(max-width:780px){.steps{grid-template-columns:1fr;}}
+
+/* PAYBACK */
+.calc{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:38px;}
+.calc .toggle{display:flex;gap:8px;margin-bottom:22px;}
+.calc .toggle button{flex:1;background:var(--bg);border:1.5px solid var(--line);color:var(--ink2);padding:12px;border-radius:12px;cursor:pointer;font-family:var(--body);font-weight:700;font-size:13.5px;transition:.2s;}
+.calc .toggle button.on{background:var(--acc);color:var(--acc-ink);border-color:var(--acc);}
+.calc label{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:10px;font-weight:600;}
+.calc label b{font-family:var(--disp);color:var(--ink);}
+.calc input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:9px;background:var(--bg2);outline:none;}
+.calc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--acc);cursor:pointer;border:3px solid var(--card);box-shadow:0 0 0 1.5px var(--acc);transition:background .5s;}
+.calc input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--acc);cursor:pointer;border:3px solid var(--card);}
+.calc .out{text-align:center;background:var(--acc-soft);border-radius:22px;padding:30px 18px;transition:background .5s;}
+.calc .out .big{font-family:var(--disp);font-weight:800;font-size:clamp(60px,10vw,96px);line-height:.85;color:var(--acc-ink);letter-spacing:-.04em;}
+.calc .out .cap{font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink);opacity:.7;margin-top:10px;}
+.calc .out .msg{margin-top:16px;font-size:13.5px;color:var(--acc-ink);line-height:1.45;max-width:32ch;margin-left:auto;margin-right:auto;}
+@media(max-width:680px){.calc{grid-template-columns:1fr;gap:24px;padding:24px;}}
+
+/* CASES */
+.cases-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.case{background:var(--card);border:1.5px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .35s,box-shadow .35s;}
+.case:hover{transform:translateY(-6px);box-shadow:0 26px 50px -32px rgba(40,20,8,.3);}
+.case .ph{aspect-ratio:4/3;overflow:hidden;}
+.case .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+.case:hover .ph img{transform:scale(1.05);}
+.case .body{padding:20px 22px;}
+.case .metric{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--acc);letter-spacing:-.03em;transition:color .5s;}
+.case h4{font-family:var(--disp);font-weight:700;font-size:18px;margin:4px 0 7px;}
+.case p{font-size:13px;color:var(--soft);line-height:1.45;}
+@media(max-width:780px){.cases-grid{grid-template-columns:1fr;}}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center;}
+.about .pic{position:relative;}
+.about .pic .circle{aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:1.5px solid var(--line);position:relative;z-index:2;}
+.about .pic .circle img{width:100%;height:100%;object-fit:cover;}
+.about .pic .ring{position:absolute;inset:-14px;border:2px dashed var(--acc);border-radius:50%;z-index:1;opacity:.6;transition:border-color .5s;}
+.about .pic .st{position:absolute;bottom:6%;right:-6%;z-index:3;}
+.about ul{list-style:none;margin-top:22px;}
+.about ul li{position:relative;padding:10px 0 10px 30px;font-size:15px;border-top:1px solid var(--line);}
+.about ul li:before{content:"✦";position:absolute;left:2px;top:10px;color:var(--acc);transition:color .5s;}
+@media(max-width:780px){.about{grid-template-columns:1fr;gap:36px;}.about .pic{max-width:320px;}}
+
+/* FAQ */
+.faq-list{margin-top:34px;border-top:1.5px solid var(--line);}
+.qa{border-bottom:1.5px solid var(--line);}
+.qa button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--disp);font-weight:700;font-size:clamp(18px,2.3vw,23px);color:var(--ink);letter-spacing:-.01em;}
+.qa .ic{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--acc-soft);color:var(--acc-ink);display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .3s,background .5s;}
+.qa.open .ic{transform:rotate(45deg);}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.qa .ans p{padding:0 0 24px;font-size:15px;color:var(--ink2);line-height:1.6;max-width:70ch;}
+
+/* FINAL (accent block) */
+.final{background:var(--acc);color:var(--acc-ink);text-align:center;transition:background .5s;border-radius:40px;margin:0 16px clamp(28px,4vw,48px);}
+.final .eyebrow{color:var(--acc-ink);}.final .eyebrow:before{background:var(--acc-ink);}
+.final h2{color:var(--acc-ink);font-size:clamp(32px,5.4vw,64px);}
+.final .lead{color:var(--acc-ink);opacity:.85;margin:0 auto 32px;}
+.final .btn{background:var(--ink);border-color:var(--ink);color:var(--bg);}
+.final .btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(0,0,0,.4);}
+.final .alt{margin-top:18px;font-size:13.5px;opacity:.8;}
+.final .alt a{color:var(--acc-ink);font-weight:700;}
+
+footer{padding:40px 0;}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--soft);}
+.foot-in .brand{color:var(--ink);font-size:21px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand"><span class="o"></span>Сезон</div>
+    <div class="seasons">
+      <button data-s="winter" onclick="setSeason('winter',this)"><span class="d"></span><span>Зима</span></button>
+      <button data-s="spring" onclick="setSeason('spring',this)"><span class="d"></span><span>Весна</span></button>
+      <button data-s="summer" onclick="setSeason('summer',this)"><span class="d"></span><span>Лето</span></button>
+      <button data-s="autumn" class="on" onclick="setSeason('autumn',this)"><span class="d"></span><span>Осень</span></button>
+    </div>
+    <a href="#contact" class="nav-cta"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M22 3 2 11l5 2 2 6 3-4 5 4 5-16Z"/></svg><span>Telegram</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Студия сезонного и авторского меню</span>
+      <h1>
+        <span class="l"><span>Меню,</span></span>
+        <span class="l"><span>которое <span class="squiggle">окупается<svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M3 8 C 60 2, 120 2, 160 6 S 250 11, 297 4"/></svg></span></span></span>
+        <span class="l"><span>с первой недели</span></span>
+      </h1>
+      <p class="lead">Разрабатываю сезонные и сигнатурные напитки для кофеен — с рецептурами, техкартами и расчётом себестоимости. Чтобы гости возвращались, а средний чек рос.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-acc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 3 2 11l5 2 2 6 3-4 5 4 5-16Z"/></svg>Обсудить в Telegram</a>
+        <a href="#products" class="btn btn-line">Смотреть пакеты</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip"><b><span class="num" data-to="8">0</span>+</b> лет в спешелти</span>
+        <span class="chip"><b><span class="num" data-to="40">0</span>+</b> кофеен</span>
+        <span class="chip"><b>4</b> сезона в год</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="blob"></div>
+      <span class="sticker tag">переключи сезон ↑</span>
+      <div class="frame"><img src="__HERO__" alt="Эксперт за работой"></div>
+      <div class="note">окупается с <b>~1–2</b> чашек в день</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marq"><div class="t">
+  <span>Сезонное меню</span><span class="s">✦</span><span>Авторские напитки</span><span class="s">✦</span><span>Гео-эксклюзив</span><span class="s">✦</span><span>Рецептуры и техкарты</span><span class="s">✦</span><span>Расчёт себестоимости</span><span class="s">✦</span>
+  <span>Сезонное меню</span><span class="s">✦</span><span>Авторские напитки</span><span class="s">✦</span><span>Гео-эксклюзив</span><span class="s">✦</span><span>Рецептуры и техкарты</span><span class="s">✦</span><span>Расчёт себестоимости</span><span class="s">✦</span>
+</div></div>
+
+<!-- PROBLEM -->
+<section class="prob" id="problem">
+  <div class="wrap">
+    <span class="eyebrow reveal">Проблема</span>
+    <h2 class="reveal">«Придумаем сами» — и теряете на этом каждый сезон</h2>
+    <p class="lead reveal">Меню — не творчество на коленке между сменами. Без системы это стоп-лист и упущенная выручка.</p>
+    <div class="prob-grid reveal">
+      <div class="pcard"><span class="i">01</span><p>Бариста увольняется — и уносит рецепты с собой. Хитов больше нет.</p></div>
+      <div class="pcard"><span class="i">02</span><p>Соседняя кофейня копирует новинку за неделю. Уникальности ноль.</p></div>
+      <div class="pcard"><span class="i">03</span><p>Напитки уходят в минус: себестоимость никто толком не считал.</p></div>
+      <div class="pcard"><span class="i">04</span><p>«Новинки» не цепляют. Гость берёт то же, что и всегда.</p></div>
+      <div class="pcard"><span class="i">05</span><p>На R&D в операционке просто нет времени и рук.</p></div>
+      <div class="pcard"><span class="i">06</span><p>Сезон сменился, а в витрине то же самое. Повода вернуться нет.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="wrap">
+    <span class="eyebrow reveal">Пакеты</span>
+    <h2 class="reveal">Два формата — под бюджет и задачу</h2>
+    <p class="lead reveal">Быстрый удалённый пакет, чтобы окупаться уже в этом сезоне. И авторская проработка под ключ, когда нужна настоящая уникальность.</p>
+    <div class="prod-grid">
+      <div class="prod reveal">
+        <span class="tag">Удалённо · вся Россия</span>
+        <h3>Сезонная коллекция</h3>
+        <span class="who">Для одиночных кофеен и небольших точек</span>
+        <div class="price">от 9 000 ₽ <small>/ сезон</small></div>
+        <ul>
+          <li>Готовая сезонная линейка под ваше оборудование</li>
+          <li>Рецептуры и технологические карты</li>
+          <li>Расчёт себестоимости и рекомендованных цен</li>
+          <li>Лист закупки ингредиентов</li>
+          <li>Описания напитков для меню</li>
+        </ul>
+        <a href="#contact" class="btn btn-line">Запросить коллекцию</a>
+      </div>
+      <div class="prod feature reveal" style="transition-delay:.08s">
+        <span class="pstick sticker">★ хит</span>
+        <span class="tag">Москва · под ключ</span>
+        <h3>Сигнатура</h3>
+        <span class="who">Для кофеен и сетей, которым нужна уникальность</span>
+        <div class="price">от 60 000 ₽ <small>/ проект</small></div>
+        <ul>
+          <li>Физическая разработка и дегустации в Москве</li>
+          <li>Авторские напитки только под ваш бренд</li>
+          <li>Гео-эксклюзив: сосед такой же не получит</li>
+          <li>Техкарты, себестоимость, лист закупки</li>
+          <li>Обучение бариста и визуал для меню</li>
+        </ul>
+        <a href="#contact" class="btn btn-acc">Обсудить проект</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section id="deliverables">
+  <div class="wrap">
+    <span class="eyebrow reveal">Что вы получаете</span>
+    <h2 class="reveal">Не «идеи», а рабочие документы</h2>
+    <p class="lead reveal">Всё, чтобы запустить меню в понедельник и не зависеть от памяти одного бариста.</p>
+    <div class="deliv-grid reveal">
+      <div class="dcard"><span class="n">1</span><h4>Рецептуры</h4><p>Точные спецификации: граммовки, последовательность, температуры.</p></div>
+      <div class="dcard"><span class="n">2</span><h4>Технологические карты</h4><p>Готовые ТТК — стандарт, который не плавает от смены к смене.</p></div>
+      <div class="dcard"><span class="n">3</span><h4>Себестоимость и маржа</h4><p>Расчёт по каждой позиции и цена. Никаких напитков в минус.</p></div>
+      <div class="dcard"><span class="n">4</span><h4>Лист закупки</h4><p>Что и где брать, с альтернативами по поставщикам.</p></div>
+      <div class="dcard"><span class="n">5</span><h4>Обучение бариста</h4><p>Прогон новой линейки с командой (в пакете «Сигнатура»).</p></div>
+      <div class="dcard"><span class="n">6</span><h4>Тексты и визуал</h4><p>Названия и описания, чтобы напиток продавал себя сам.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal">Как работаем</span>
+    <h2 class="reveal">Понятный процесс — без бесконечных доделок</h2>
+    <p class="lead reveal">Объём правок зафиксирован заранее, чтобы проект не растягивался, а вы понимали, за что платите.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="sn">01</div><h4>Бриф и аудит</h4><p>Концепция, оборудование, гость, текущее меню, цели.</p></div>
+      <div class="step reveal" style="transition-delay:.06s"><div class="sn">02</div><h4>Разработка</h4><p>Собираю линейку под сезон и считаю экономику.</p></div>
+      <div class="step reveal" style="transition-delay:.12s"><div class="sn">03</div><h4>Дегустация</h4><p>Физическая проработка и согласование вкуса («Сигнатура»).</p></div>
+      <div class="step reveal" style="transition-delay:.18s"><div class="sn">04</div><h4>Правки</h4><p>Дорабатываем по итогам.</p><span class="chip">2 правки в цене · далее по прайсу</span></div>
+      <div class="step reveal" style="transition-delay:.24s"><div class="sn">05</div><h4>Финал</h4><p>Финальные рецептуры, техкарты, себестоимость, закупка.</p></div>
+      <div class="step reveal" style="transition-delay:.3s"><div class="sn">06</div><h4>Запуск</h4><p>Ввод меню и обучение команды. Дальше — следующий сезон.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYBACK -->
+<section id="payback">
+  <div class="wrap">
+    <span class="eyebrow reveal">Окупаемость</span>
+    <h2 class="reveal">Сколько чашек в день, чтобы меню окупилось</h2>
+    <p class="lead reveal">Посчитайте сами. Обычно ответ — пара чашек в день, а дальше всё в плюс.</p>
+    <div class="calc reveal">
+      <div>
+        <div class="toggle">
+          <button id="tg-remote" class="on" onclick="setPack(9000,this)">Коллекция · 9 000 ₽</button>
+          <button id="tg-sig" onclick="setPack(60000,this)">Сигнатура · 60 000 ₽</button>
+        </div>
+        <label>Маржа с одной чашки <b id="mLab">180 ₽</b></label>
+        <input type="range" id="margin" min="60" max="320" step="10" value="180" oninput="calc()">
+        <label style="margin-top:20px">Длительность сезона <b id="dLab">90 дней</b></label>
+        <input type="range" id="days" min="30" max="120" step="10" value="90" oninput="calc()">
+      </div>
+      <div class="out">
+        <div class="big" id="cups">0,6</div>
+        <div class="cap">лишних чашек в день</div>
+        <div class="msg" id="msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <span class="eyebrow reveal">Кейсы</span>
+    <h2 class="reveal">Что меняется после запуска</h2>
+    <p class="lead reveal">Сезонные линейки под разные форматы — и что они меняют в выручке.</p>
+    <div class="cases-grid">
+      <div class="case reveal"><div class="ph"><img src="__AUTUMN__" alt="Осенняя линейка"></div><div class="body"><div class="metric">+18%</div><h4>Сеть из 4 точек</h4><p>Осенняя коллекция из 6 напитков. Рост среднего чека. [пример]</p></div></div>
+      <div class="case reveal" style="transition-delay:.08s"><div class="ph"><img src="__WINTER__" alt="Зимняя линейка"></div><div class="body"><div class="metric">+2 200 ₽</div><h4>Кофейня у метро</h4><p>Зимнее меню: согревающие напитки в топ-3 продаж. [пример]</p></div></div>
+      <div class="case reveal" style="transition-delay:.16s"><div class="ph"><img src="__SUMMER__" alt="Летняя линейка"></div><div class="body"><div class="metric">−30%</div><h4>Летнее to-go</h4><p>Холодная линейка на лето: пересчёт себестоимости, плюс к марже. [пример]</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="pic reveal">
+      <div class="ring"></div>
+      <div class="circle"><img src="__ABOUT__" alt="Эксперт за работой"></div>
+      <span class="st sticker">★ из индустрии</span>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Эксперт</span>
+      <h2 class="reveal">Человек из индустрии, а не агентство</h2>
+      <p class="lead reveal">[Имя]. Не маркетолог, нагенеривший «трендовые напитки», а человек, который годами варил, считал и запускал меню в реальных кофейнях.</p>
+      <ul class="reveal">
+        <li>Глубокая экспертиза в спешелти-кофе и разработке напитков</li>
+        <li>Считаю экономику: каждая позиция должна зарабатывать</li>
+        <li>Понимаю операционку изнутри — даю реализуемое, а не картинки</li>
+        <li>Доступ к сырью и поставщикам — помогаю с закупкой</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <span class="eyebrow reveal">Вопросы</span>
+    <h2 class="reveal">Частые вопросы</h2>
+    <div class="faq-list reveal">
+      <div class="qa"><button onclick="tog(this)">Сколько правок входит в цену?<span class="ic">+</span></button><div class="ans"><p>В каждый проект включено 2 круга правок — этого хватает в подавляющем большинстве случаев. Дополнительные оплачиваются по прайсу. Так проект не растягивается на месяцы, а вы заранее понимаете итоговую стоимость.</p></div></div>
+      <div class="qa"><button onclick="tog(this)">Что значит «гео-эксклюзив»?<span class="ic">+</span></button><div class="ans"><p>Для пакета «Сигнатура»: разработанные для вас авторские напитки я не передаю другой кофейне в вашем районе. Вы получаете уникальность, которую сосед не скопирует из меню.</p></div></div>
+      <div class="qa"><button onclick="tog(this)">Работаете только по Москве?<span class="ic">+</span></button><div class="ans"><p>Физическая проработка с дегустациями — да, по Москве. Но пакет «Сезонная коллекция» полностью удалённый и подходит для кофейни в любом городе.</p></div></div>
+      <div class="qa"><button onclick="tog(this)">Какие сроки?<span class="ic">+</span></button><div class="ans"><p>Удалённая коллекция — обычно несколько дней. Авторская проработка с дегустациями дольше, обсуждаем под объём на брифе.</p></div></div>
+      <div class="qa"><button onclick="tog(this)">Как происходит оплата?<span class="ic">+</span></button><div class="ans"><p>Обсуждаем в Telegram после брифа. Работаю официально, по договору. [Уточните условия под себя.]</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final" id="contact">
+  <div class="wrap">
+    <span class="eyebrow reveal">Готовы к новому сезону?</span>
+    <h2 class="reveal">Соберём меню, которое продаёт</h2>
+    <p class="lead reveal">Напишите в Telegram — задам пару вопросов о вашей кофейне и предложу формат. Бесплатно и без обязательств.</p>
+    <a href="https://t.me/username" class="btn reveal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 3 2 11l5 2 2 6 3-4 5 4 5-16Z"/></svg>Написать в Telegram</a>
+    <div class="alt reveal">или почта <a href="mailto:hello@example.ru">hello@example.ru</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand"><span class="o" style="display:inline-block;width:17px;height:17px"></span> Сезон</div>
+    <div>© 2026 · Студия сезонного и авторского меню для кофеен</div>
+    <div><a href="https://t.me/username" style="color:var(--ink);font-weight:600">Telegram</a></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.body.classList.add('loaded'));
+function setSeason(s,btn){document.documentElement.setAttribute('data-season',s);
+  document.querySelectorAll('.seasons button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+let pack=9000;
+function setPack(p,btn){pack=p;document.querySelectorAll('.toggle button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');calc();}
+function calc(){
+  const m=+document.getElementById('margin').value,d=+document.getElementById('days').value;
+  document.getElementById('mLab').textContent=m+' ₽';document.getElementById('dLab').textContent=d+' дней';
+  const v=pack/m/d;document.getElementById('cups').textContent=v.toFixed(1).replace('.',',');
+  const msg=document.getElementById('msg');
+  msg.textContent = v<=2?'Меньше пары чашек в день — меню окупается само, дальше плюс.':v<=5?'Несколько чашек в день — порог берётся легко.':'Подвиньте маржу или выберите коллекцию.';
+}
+calc();
+function tog(b){const qa=b.parentElement,a=qa.querySelector('.ans');const o=qa.classList.toggle('open');a.style.maxHeight=o?a.scrollHeight+'px':'0';}
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function cnt(el){const to=+el.dataset.to;let c=0;const s=Math.max(1,Math.ceil(to/35));const t=setInterval(()=>{c+=s;if(c>=to){c=to;clearInterval(t);}el.textContent=c;},26);}
+window.addEventListener('load',()=>setTimeout(()=>document.querySelectorAll('.num').forEach(cnt),800));
+</script>
+</body>
+</html>

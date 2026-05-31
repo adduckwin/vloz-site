@@ -1,0 +1,8 @@
+# промежуточные файлы сборки
+.build/
+# архив, который делает deploy_build.py
+vloz-site.zip
+# системное
+.DS_Store
+__pycache__/
+*.pyc
