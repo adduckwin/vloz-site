@@ -146,11 +146,11 @@ def head(title, desc, canonical, extra_ld="", ogimg=""):
 </head>"""
 
 NAV = f"""<header class="nav"><div class="wrap nav-in">
-<a class="brand" href="blog.html">{RINGS}VLOZ</a>
+<a class="brand" href="/">{RINGS}VLOZ</a>
 <nav class="nav-links">
-<a href="blog.html">Блог</a>
-<a href="vloz.html#products">Услуги</a>
-<a href="vloz.html#contact">Связаться</a>
+<a href="/blog/">Блог</a>
+<a href="/#products">Услуги</a>
+<a href="/#contact">Связаться</a>
 </nav></div></header>"""
 
 FOOT = f"""<footer><div class="wrap foot">
