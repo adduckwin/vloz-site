@@ -48,6 +48,10 @@ a{color:inherit;}
 header.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;}
+.brand .lk{display:inline-flex;align-items:baseline;gap:6px;}
+.brand .d{color:var(--ink2);font-weight:700;}
+.brand .x{color:var(--acc);font-weight:600;font-size:.82em;}
+.brand .v{color:var(--ink);font-weight:800;}
 .brand svg{width:26px;height:26px;}
 .brand svg circle{fill:none;stroke:var(--acc);stroke-width:5;}
 .nav-links{display:flex;gap:22px;font-weight:600;font-size:14.5px;}
@@ -81,6 +85,11 @@ footer{border-top:1px solid var(--line);margin-top:70px;}
 .post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
 .post p{font-size:14.5px;color:var(--ink2);flex:1;}
 .post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
+.post .cardfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
+.post .cardfoot .meta{margin-top:0;}
+.post .rd{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13px;color:var(--acc);}
+.post .rd svg{width:15px;height:15px;transition:transform .3s;}
+.post:hover .rd svg{transform:translateX(4px);}
 
 /* ===== ARTICLE ===== */
 .crumb{padding:26px 0 0;font-size:13px;color:var(--soft);}
@@ -146,7 +155,7 @@ def head(title, desc, canonical, extra_ld="", ogimg=""):
 </head>"""
 
 NAV = f"""<header class="nav"><div class="wrap nav-in">
-<a class="brand" href="/">{RINGS}VLOZ</a>
+<a class="brand" href="/">{RINGS}<span class="lk"><span class="d">Duckwin</span><span class="x">×</span><span class="v">VLOZ</span></span></a>
 <nav class="nav-links">
 <a href="/blog/">Блог</a>
 <a href="/#products">Услуги</a>
@@ -594,7 +603,7 @@ for n, a in enumerate(ARTS, 1):
 <span class="cat">{a["cat"]}</span>
 <h2>{a["h1"]}</h2>
 <p>{a["desc"]}</p>
-<div class="meta">{a["read"]} чтения</div>
+<div class="cardfoot"><span class="meta">{a["read"]} чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a>'''
 
 idx_ld = {"@context":"https://schema.org","@type":"Blog","name":"Блог VLOZ","url":f"{SITE}/blog/",

@@ -27,6 +27,10 @@ a{color:inherit;}
 header.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;}
+.brand .lk{display:inline-flex;align-items:baseline;gap:6px;}
+.brand .d{color:var(--ink2);font-weight:700;}
+.brand .x{color:var(--acc);font-weight:600;font-size:.82em;}
+.brand .v{color:var(--ink);font-weight:800;}
 .brand svg{width:26px;height:26px;}
 .brand svg circle{fill:none;stroke:var(--acc);stroke-width:5;}
 .nav-links{display:flex;gap:22px;font-weight:600;font-size:14.5px;}
@@ -60,6 +64,11 @@ footer{border-top:1px solid var(--line);margin-top:70px;}
 .post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
 .post p{font-size:14.5px;color:var(--ink2);flex:1;}
 .post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
+.post .cardfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
+.post .cardfoot .meta{margin-top:0;}
+.post .rd{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13px;color:var(--acc);}
+.post .rd svg{width:15px;height:15px;transition:transform .3s;}
+.post:hover .rd svg{transform:translateX(4px);}
 
 /* ===== ARTICLE ===== */
 .crumb{padding:26px 0 0;font-size:13px;color:var(--soft);}
@@ -149,7 +158,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in">
-<a class="brand" href="/"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>VLOZ</a>
+<a class="brand" href="/"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg><span class="lk"><span class="d">Duckwin</span><span class="x">×</span><span class="v">VLOZ</span></span></a>
 <nav class="nav-links">
 <a href="/blog/">Блог</a>
 <a href="/#products">Услуги</a>
@@ -169,7 +178,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Меню</span>
 <h2>Как составить меню для кофейни: пошаговый гайд</h2>
 <p>Пошагово: с чего начать, как собрать структуру меню кофейни, сколько позиций нужно, как посчитать экономику каждой и не уйти в минус.</p>
-<div class="meta">7 мин чтения</div>
+<div class="cardfoot"><span class="meta">7 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a><a class="post" href="/blog/sebestoimost-napitka/">
 <span class="idx" aria-hidden="true">02</span>
 <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
@@ -177,7 +186,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Экономика</span>
 <h2>Как рассчитать себестоимость напитка в кофейне</h2>
 <p>Формула себестоимости напитка, разбор на примере капучино с цифрами, нормальный фудкост и как не уйти в минус на сезонных позициях.</p>
-<div class="meta">6 мин чтения</div>
+<div class="cardfoot"><span class="meta">6 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a><a class="post" href="/blog/sezonnoe-menyu/">
 <span class="idx" aria-hidden="true">03</span>
 <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
@@ -185,7 +194,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Меню</span>
 <h2>Сезонное меню для кофейни: зачем и как обновлять</h2>
 <p>Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.</p>
-<div class="meta">5 мин чтения</div>
+<div class="cardfoot"><span class="meta">5 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a><a class="post" href="/blog/avtorskie-napitki-idei/">
 <span class="idx" aria-hidden="true">04</span>
 <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
@@ -193,7 +202,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Идеи</span>
 <h2>Идеи авторских напитков для кофейни по сезонам</h2>
 <p>Что делает напиток авторским, концепты под весну, лето, осень и зиму, как адаптировать идею под себестоимость и придумать название.</p>
-<div class="meta">6 мин чтения</div>
+<div class="cardfoot"><span class="meta">6 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a><a class="post" href="/blog/tehnologicheskaya-karta/">
 <span class="idx" aria-hidden="true">05</span>
 <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
@@ -201,7 +210,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Документы</span>
 <h2>Технологическая карта на напиток: что это и как составить</h2>
 <p>Зачем нужна ТТК на напиток, что в ней должно быть, чем отличается от рецепта, готовый шаблон и как внедрить в смену.</p>
-<div class="meta">5 мин чтения</div>
+<div class="cardfoot"><span class="meta">5 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a><a class="post" href="/blog/srednij-chek-kofejni/">
 <span class="idx" aria-hidden="true">06</span>
 <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="7"/></svg>
@@ -209,7 +218,7 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <span class="cat">Экономика</span>
 <h2>Как поднять средний чек в кофейне через меню</h2>
 <p>Рабочие способы увеличить средний чек кофейни: допродажи, апгрейды, сигнатура как якорь, психология цен и сезонные новинки.</p>
-<div class="meta">6 мин чтения</div>
+<div class="cardfoot"><span class="meta">6 мин чтения</span><span class="rd">Читать<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </a>
 </div></div>
 <footer><div class="wrap foot">
