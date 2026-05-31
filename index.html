@@ -325,6 +325,14 @@ html[data-season=summer] .bigword:before{content:"ЛЕТО";}
 .hero-fx{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none;}
 .nav-blog{font-weight:700;font-size:14px;color:var(--ink2);text-decoration:none;transition:color .2s;margin-right:4px;}
 .nav-blog:hover{color:var(--acc);}
+.nav-max{display:inline-flex;align-items:center;gap:6px;border:1.6px solid var(--line);color:var(--ink);padding:9px 15px;border-radius:99px;font-weight:700;font-size:14px;text-decoration:none;transition:border-color .2s,color .2s,transform .2s;}
+.nav-max:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px);}
+.nav-max svg{width:15px;height:15px;}
+.brand .lk{display:inline-flex;align-items:baseline;gap:6px;}
+.brand .d{color:var(--ink2);font-weight:700;}
+.brand .x{color:var(--acc);font-weight:600;font-size:.82em;}
+.brand .v{font-weight:800;}
+@media(max-width:540px){.nav-max span{display:none;}}
 
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .final .btn-max{background:transparent;color:var(--ink);}
@@ -473,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="nav">
   <div class="wrap nav-in">
-    <div class="brand"><span class="o"></span>VLOZ</div>
+    <div class="brand"><span class="o"></span><span class="lk"><span class="d">Duckwin</span><span class="x">×</span><span class="v">VLOZ</span></span></div>
     <div class="seasons">
       <button data-s="winter" onclick="setSeason('winter',this)"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5 4.2 16.5"/></svg></span><span>Зима</span></button>
       <button data-s="spring" onclick="setSeason('spring',this)"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M12 13c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 11c0-2.6 2-4.5 5-4.5 0 2.6-2 4.5-5 4.5z"/></svg></span><span>Весна</span></button>
@@ -481,6 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button data-s="autumn" class="on" onclick="setSeason('autumn',this)"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18C6 10 12 5 19 5c0 8-6 13-13 13z"/><path d="M6 18 14.5 9.5"/></svg></span><span>Осень</span></button>
     </div>
     <a href="/vloz-site/blog/" class="nav-blog">Блог</a>
+    <a href="https://max.ru/u/f9LHodD0cOIvYeSSomMV090N8qMvxtqD9VBvgUE7WqJQgWUf4hlujvKCu1s" class="nav-max"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg><span>MAX</span></a>
     <a href="#contact" class="nav-cta"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M22 3 2 11l5 2 2 6 3-4 5 4 5-16Z"/></svg><span>Telegram</span></a>
   </div>
 </header>
