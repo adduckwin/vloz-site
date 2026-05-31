@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сезонное меню для кофейни: зачем нужно и как обновлять — VLOZ</title>
+<meta name="description" content="Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.">
+<meta property="og:title" content="Сезонное меню для кофейни: зачем нужно и как обновлять — VLOZ">
+<meta property="og:description" content="Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://duckwin.ru/blog/sezonnoe-menyu/">
+<meta property="og:image" content="https://duckwin.ru/blog/cover-sezonnoe-menyu.jpg">
+<link rel="canonical" href="https://duckwin.ru/blog/sezonnoe-menyu/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#171310;--ink2:#4c453b;--soft:#857a6a;--line:#e6dcc9;--acc:#ff5a1f;--acc-soft:#ffe2d3;--acc2:#21564f;--dot:#e1d7c3;--disp:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:28px 28px;opacity:.55;}
+a{color:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.col{max-width:720px;margin:0 auto;padding:0 24px;}
+
+header.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;}
+.brand svg{width:26px;height:26px;}
+.brand svg circle{fill:none;stroke:var(--acc);stroke-width:5;}
+.nav-links{display:flex;gap:22px;font-weight:600;font-size:14.5px;}
+.nav-links a{text-decoration:none;color:var(--ink2);transition:color .2s;}
+.nav-links a:hover{color:var(--acc);}
+
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
+.kicker:before{content:"";width:22px;height:2px;background:var(--acc);border-radius:2px;}
+
+footer{border-top:1px solid var(--line);margin-top:70px;}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:30px 0;font-size:13.5px;color:var(--soft);}
+.foot a{color:var(--ink);font-weight:600;text-decoration:none;}
+.foot .ll{display:flex;gap:16px;}
+
+/* ===== INDEX ===== */
+.bloghero{padding:clamp(46px,7vw,88px) 0 30px;}
+.bloghero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.0;letter-spacing:-.03em;margin:14px 0 16px;}
+.bloghero p{font-size:18px;color:var(--ink2);max-width:60ch;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:30px;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.post{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.post:hover{transform:translateY(-5px);box-shadow:0 24px 50px -34px rgba(40,20,8,.35);border-color:var(--acc);}
+.post .cat{font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);}
+.post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
+.post p{font-size:14.5px;color:var(--ink2);flex:1;}
+.post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
+
+/* ===== ARTICLE ===== */
+.crumb{padding:26px 0 0;font-size:13px;color:var(--soft);}
+.crumb a{color:var(--soft);text-decoration:none;}.crumb a:hover{color:var(--acc);}
+article{padding:18px 0 0;}
+article h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.6vw,50px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 16px;}
+.amETA{display:flex;gap:16px;font-size:13px;color:var(--soft);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;}
+article h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.15;letter-spacing:-.01em;margin:38px 0 12px;}
+article h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:24px 0 8px;}
+article p{font-size:17px;color:#2b2620;margin:0 0 16px;}
+article ul,article ol{margin:0 0 18px;padding-left:22px;}
+article li{font-size:17px;color:#2b2620;margin:7px 0;}
+article strong{color:var(--ink);}
+article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.lead{font-size:20px!important;color:var(--ink2)!important;}
+.callout{background:var(--acc-soft);border-radius:18px;padding:22px 24px;margin:26px 0;}
+.callout b{font-family:var(--disp);}
+.callout ul{margin:10px 0 0;}
+.formula{background:var(--ink);color:#f3ede2;border-radius:16px;padding:20px 24px;margin:22px 0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:15px;line-height:1.7;overflow-x:auto;}
+.formula .v{color:#ffb38a;}
+.endcta{background:var(--acc);color:#2a0e02;border-radius:26px;padding:34px;margin:46px 0 0;text-align:center;}
+.endcta h3{font-family:var(--disp);font-weight:800;font-size:26px;margin-bottom:8px;}
+.endcta p{font-size:15.5px;margin-bottom:18px;opacity:.85;}
+.endcta .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);font-weight:700;padding:13px 26px;border-radius:99px;text-decoration:none;transition:transform .2s;}
+.endcta .btn:hover{transform:translateY(-2px);}
+.more{margin-top:30px;}
+.more .kicker{margin-bottom:14px;}
+.more a{display:block;text-decoration:none;border-top:1px solid var(--line);padding:14px 0;font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink);transition:color .2s;}
+.more a:hover{color:var(--acc);}
+.more a span{color:var(--soft);font-family:var(--body);font-weight:600;font-size:13px;display:block;}
+
+.cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;border:1.5px solid var(--line);margin:8px 0 30px;display:block;}
+.post .thumb{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;margin-bottom:16px;display:block;}
+.idxhero{width:100%;aspect-ratio:24/9;object-fit:cover;border-radius:22px;border:1.5px solid var(--line);margin-top:26px;display:block;}
+.fig{margin:32px 0;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:24px 22px 18px;}
+.fig svg{width:100%;height:auto;display:block;}
+.fig figcaption{font-size:13px;color:var(--soft);margin-top:14px;text-align:center;line-height:1.4;}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Сезонное меню для кофейни: зачем и как обновлять",
+   "description": "Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.",
+   "inLanguage": "ru-RU",
+   "author": {
+    "@type": "Person",
+    "name": "Антон Кряквин"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "VLOZ",
+    "url": "https://duckwin.ru"
+   },
+   "mainEntityOfPage": "https://duckwin.ru/blog/sezonnoe-menyu/",
+   "keywords": "сезонное меню кофейни"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://duckwin.ru"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Блог",
+     "item": "https://duckwin.ru/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Сезонное меню для кофейни: зачем и как обновлять",
+     "item": "https://duckwin.ru/blog/sezonnoe-menyu/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="/blog/"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>VLOZ</a>
+<nav class="nav-links">
+<a href="/blog/">Блог</a>
+<a href="/#products">Услуги</a>
+<a href="/#contact">Связаться</a>
+</nav></div></header>
+<div class="col crumb"><a href="/blog/">Блог</a> → Меню</div>
+<main class="col">
+<article>
+<span class="kicker">Меню</span>
+<h1>Сезонное меню для кофейни: зачем и как обновлять</h1>
+<div class="amETA"><span>5 мин чтения</span><span>Автор: Антон Кряквин</span></div>
+<img class="cover" src="/blog/cover-sezonnoe-menyu.jpg" alt="Сезонное меню для кофейни: зачем и как обновлять" loading="lazy">
+
+<p class="lead">Сезонное меню — это не дань моде, а механика повторных визитов. Новинки дают гостю повод вернуться, а вам — поднять средний чек без скидок.</p>
+
+<h2>Почему сезонность продаёт</h2>
+<p>Гость, который пьёт один и тот же латте, ходит по привычке. Гость, который ждёт «а что нового в этом сезоне», ходит за впечатлением — и тратит больше. Сезонные напитки также отлично работают в соцсетях: новинка — это инфоповод, классика — нет.</p>
+
+<h2>Календарь на 4 сезона</h2>
+<ul>
+<li><strong>Весна</strong> — лёгкие, цветочные и ягодные профили, матча, первые холодные напитки.</li>
+<li><strong>Лето</strong> — холодная линейка: колд брю, тоники, лимонады, фраппе. Это пик спроса на «освежающее».</li>
+<li><strong>Осень</strong> — пряные и согревающие: тыква, груша, корица, карамель. Самый «продающий» сезон новинок.</li>
+<li><strong>Зима</strong> — десертные и согревающие: какао, пряный латте, имбирь, цитрус.</li>
+</ul>
+<figure class="fig"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" font-family="Hanken Grotesk, sans-serif">
+<path d="M230 210 L230 60 A150 150 0 0 1 380 210 Z" fill="rgba(242,160,12,.18)" stroke="#fffdf8" stroke-width="3"/>
+<path d="M230 210 L380 210 A150 150 0 0 1 230 360 Z" fill="rgba(255,90,31,.16)" stroke="#fffdf8" stroke-width="3"/>
+<path d="M230 210 L230 360 A150 150 0 0 1 80 210 Z" fill="rgba(47,108,240,.15)" stroke="#fffdf8" stroke-width="3"/>
+<path d="M230 210 L80 210 A150 150 0 0 1 230 60 Z" fill="rgba(27,163,91,.16)" stroke="#fffdf8" stroke-width="3"/>
+<text x="293" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#b9780a" font-family="Bricolage Grotesque, sans-serif">Лето</text>
+<text x="293" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#ff5a1f" font-family="Bricolage Grotesque, sans-serif">Осень</text>
+<text x="166" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#2f6cf0" font-family="Bricolage Grotesque, sans-serif">Зима</text>
+<text x="166" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#1ba35b" font-family="Bricolage Grotesque, sans-serif">Весна</text>
+<circle cx="230" cy="210" r="52" fill="#fffdf8" stroke="#e6dcc9" stroke-width="1.5"/>
+<text x="230" y="205" text-anchor="middle" font-weight="800" font-size="18" fill="#171310" font-family="Bricolage Grotesque, sans-serif">4×</text>
+<text x="230" y="224" text-anchor="middle" font-size="10.5" fill="#857a6a">в год</text>
+<g font-family="Hanken Grotesk, sans-serif">
+<g transform="translate(440,118)"><circle cx="6" cy="-4" r="6" fill="#1ba35b"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Весна</text><text x="22" y="20" font-size="13" fill="#857a6a">цветочное, ягодное, матча</text></g>
+<g transform="translate(440,188)"><circle cx="6" cy="-4" r="6" fill="#f2a00c"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Лето</text><text x="22" y="20" font-size="13" fill="#857a6a">колд брю, тоники, фраппе</text></g>
+<g transform="translate(440,258)"><circle cx="6" cy="-4" r="6" fill="#ff5a1f"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Осень</text><text x="22" y="20" font-size="13" fill="#857a6a">тыква, корица, карамель</text></g>
+<g transform="translate(440,328)"><circle cx="6" cy="-4" r="6" fill="#2f6cf0"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Зима</text><text x="22" y="20" font-size="13" fill="#857a6a">какао, имбирь, цитрус</text></g>
+</g></svg><figcaption>Сезонный круг: 4 обновления в год под вкусовые профили каждого сезона.</figcaption></figure>
+<p>Оптимальная частота — 4 обновления в год, по числу сезонов. Можно добавить точечные новинки под праздники.</p>
+
+<h2>Что менять, а что оставлять</h2>
+<p>Не трогайте ядро меню — классику, которая даёт основную выручку. Меняйте только сезонный слой: 4–8 позиций. Так вы освежаете витрину, не ломая привычки постоянных гостей и не перегружая бариста.</p>
+
+<h2>Как тестировать новинки</h2>
+<p>Запускайте сезонную линейку небольшим набором, отслеживайте продажи первые 1–2 недели и оставляйте лидеров. Слабые позиции убирайте без сожаления. Считайте себестоимость заранее — щедрая порция сиропа способна превратить хит в убыточную позицию.</p>
+
+<div class="callout"><b>Главное:</b> ядро не трогаем, сезон обновляем 4 раза в год набором из 4–8 позиций, каждую считаем по себестоимости и оставляем только то, что продаётся.</div>
+
+<div class="endcta">
+<h3>Нужно меню, которое окупается?</h3>
+<p>VLOZ собирает сезонные и авторские напитки под ключ — с рецептурами, техкартами и расчётом себестоимости.</p>
+<a class="btn" href="/#products">Смотреть форматы и цены →</a>
+</div>
+<div class="more"><span class="kicker">Читать дальше</span><a href="/blog/avtorskie-napitki-idei/">Идеи авторских напитков для кофейни по сезонам<span>Идеи · 6 мин</span></a><a href="/blog/tehnologicheskaya-karta/">Технологическая карта на напиток: что это и как составить<span>Документы · 5 мин</span></a></div>
+</article>
+</main>
+<footer><div class="wrap foot">
+<div>© 2026 VLOZ · сезонное и авторское меню для кофеен · duckwin.ru</div>
+<div class="ll"><a href="https://t.me/kryanton">Telegram</a><a href="https://max.ru/u/f9LHodD0cOIvYeSSomMV090N8qMvxtqD9VBvgUE7WqJQgWUf4hlujvKCu1s">MAX</a><a href="mailto:ad@duckwin.ru">Почта</a></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог VLOZ — про меню, себестоимость и напитки для кофеен</title>
+<meta name="description" content="Практичные статьи о создании меню для кофейни: как составить меню, посчитать себестоимость напитка, собрать сезонную линейку и поднять средний чек.">
+<meta property="og:title" content="Блог VLOZ — про меню, себестоимость и напитки для кофеен">
+<meta property="og:description" content="Практичные статьи о создании меню для кофейни: как составить меню, посчитать себестоимость напитка, собрать сезонную линейку и поднять средний чек.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://duckwin.ru/blog/">
+<meta property="og:image" content="https://duckwin.ru/blog/cover-blog.jpg">
+<link rel="canonical" href="https://duckwin.ru/blog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#171310;--ink2:#4c453b;--soft:#857a6a;--line:#e6dcc9;--acc:#ff5a1f;--acc-soft:#ffe2d3;--acc2:#21564f;--dot:#e1d7c3;--disp:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:28px 28px;opacity:.55;}
+a{color:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.col{max-width:720px;margin:0 auto;padding:0 24px;}
+
+header.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;}
+.brand svg{width:26px;height:26px;}
+.brand svg circle{fill:none;stroke:var(--acc);stroke-width:5;}
+.nav-links{display:flex;gap:22px;font-weight:600;font-size:14.5px;}
+.nav-links a{text-decoration:none;color:var(--ink2);transition:color .2s;}
+.nav-links a:hover{color:var(--acc);}
+
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
+.kicker:before{content:"";width:22px;height:2px;background:var(--acc);border-radius:2px;}
+
+footer{border-top:1px solid var(--line);margin-top:70px;}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:30px 0;font-size:13.5px;color:var(--soft);}
+.foot a{color:var(--ink);font-weight:600;text-decoration:none;}
+.foot .ll{display:flex;gap:16px;}
+
+/* ===== INDEX ===== */
+.bloghero{padding:clamp(46px,7vw,88px) 0 30px;}
+.bloghero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.0;letter-spacing:-.03em;margin:14px 0 16px;}
+.bloghero p{font-size:18px;color:var(--ink2);max-width:60ch;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:30px;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.post{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.post:hover{transform:translateY(-5px);box-shadow:0 24px 50px -34px rgba(40,20,8,.35);border-color:var(--acc);}
+.post .cat{font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);}
+.post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
+.post p{font-size:14.5px;color:var(--ink2);flex:1;}
+.post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
+
+/* ===== ARTICLE ===== */
+.crumb{padding:26px 0 0;font-size:13px;color:var(--soft);}
+.crumb a{color:var(--soft);text-decoration:none;}.crumb a:hover{color:var(--acc);}
+article{padding:18px 0 0;}
+article h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.6vw,50px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 16px;}
+.amETA{display:flex;gap:16px;font-size:13px;color:var(--soft);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;}
+article h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.15;letter-spacing:-.01em;margin:38px 0 12px;}
+article h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:24px 0 8px;}
+article p{font-size:17px;color:#2b2620;margin:0 0 16px;}
+article ul,article ol{margin:0 0 18px;padding-left:22px;}
+article li{font-size:17px;color:#2b2620;margin:7px 0;}
+article strong{color:var(--ink);}
+article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.lead{font-size:20px!important;color:var(--ink2)!important;}
+.callout{background:var(--acc-soft);border-radius:18px;padding:22px 24px;margin:26px 0;}
+.callout b{font-family:var(--disp);}
+.callout ul{margin:10px 0 0;}
+.formula{background:var(--ink);color:#f3ede2;border-radius:16px;padding:20px 24px;margin:22px 0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:15px;line-height:1.7;overflow-x:auto;}
+.formula .v{color:#ffb38a;}
+.endcta{background:var(--acc);color:#2a0e02;border-radius:26px;padding:34px;margin:46px 0 0;text-align:center;}
+.endcta h3{font-family:var(--disp);font-weight:800;font-size:26px;margin-bottom:8px;}
+.endcta p{font-size:15.5px;margin-bottom:18px;opacity:.85;}
+.endcta .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);font-weight:700;padding:13px 26px;border-radius:99px;text-decoration:none;transition:transform .2s;}
+.endcta .btn:hover{transform:translateY(-2px);}
+.more{margin-top:30px;}
+.more .kicker{margin-bottom:14px;}
+.more a{display:block;text-decoration:none;border-top:1px solid var(--line);padding:14px 0;font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink);transition:color .2s;}
+.more a:hover{color:var(--acc);}
+.more a span{color:var(--soft);font-family:var(--body);font-weight:600;font-size:13px;display:block;}
+
+.cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;border:1.5px solid var(--line);margin:8px 0 30px;display:block;}
+.post .thumb{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;margin-bottom:16px;display:block;}
+.idxhero{width:100%;aspect-ratio:24/9;object-fit:cover;border-radius:22px;border:1.5px solid var(--line);margin-top:26px;display:block;}
+.fig{margin:32px 0;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:24px 22px 18px;}
+.fig svg{width:100%;height:auto;display:block;}
+.fig figcaption{font-size:13px;color:var(--soft);margin-top:14px;text-align:center;line-height:1.4;}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Blog",
+ "name": "Блог VLOZ",
+ "url": "https://duckwin.ru/blog/",
+ "description": "Статьи о создании меню для кофеен: рецептуры, себестоимость, сезонность, авторские напитки.",
+ "blogPost": [
+  {
+   "@type": "BlogPosting",
+   "headline": "Как составить меню для кофейни: пошаговый гайд",
+   "url": "https://duckwin.ru/blog/kak-sostavit-menyu-kofejni/",
+   "keywords": "как составить меню кофейни"
+  },
+  {
+   "@type": "BlogPosting",
+   "headline": "Как рассчитать себестоимость напитка в кофейне",
+   "url": "https://duckwin.ru/blog/sebestoimost-napitka/",
+   "keywords": "себестоимость напитка кофейня"
+  },
+  {
+   "@type": "BlogPosting",
+   "headline": "Сезонное меню для кофейни: зачем и как обновлять",
+   "url": "https://duckwin.ru/blog/sezonnoe-menyu/",
+   "keywords": "сезонное меню кофейни"
+  },
+  {
+   "@type": "BlogPosting",
+   "headline": "Идеи авторских напитков для кофейни по сезонам",
+   "url": "https://duckwin.ru/blog/avtorskie-napitki-idei/",
+   "keywords": "авторские напитки для кофейни идеи"
+  },
+  {
+   "@type": "BlogPosting",
+   "headline": "Технологическая карта на напиток: что это и как составить",
+   "url": "https://duckwin.ru/blog/tehnologicheskaya-karta/",
+   "keywords": "технологическая карта на напиток"
+  },
+  {
+   "@type": "BlogPosting",
+   "headline": "Как поднять средний чек в кофейне через меню",
+   "url": "https://duckwin.ru/blog/srednij-chek-kofejni/",
+   "keywords": "как увеличить средний чек кофейни"
+  }
+ ]
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="/blog/"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="14"/></svg>VLOZ</a>
+<nav class="nav-links">
+<a href="/blog/">Блог</a>
+<a href="/#products">Услуги</a>
+<a href="/#contact">Связаться</a>
+</nav></div></header>
+<section class="bloghero"><div class="wrap">
+<span class="kicker">Блог</span>
+<h1>Про меню, себестоимость<br>и напитки для кофеен</h1>
+<p>Практичные разборы для владельцев и управляющих кофеен — как собрать меню, которое продаёт и считается. Без воды.</p>
+<img class="idxhero" src="/blog/cover-blog.jpg" alt="Напитки специальной обжарки на светлой стойке — блог VLOZ" loading="lazy">
+</div></section>
+<div class="wrap"><div class="grid">
+<a class="post" href="/blog/kak-sostavit-menyu-kofejni/">
+<img class="thumb" src="/blog/cover-kak-sostavit-menyu-kofejni.jpg" alt="Как составить меню для кофейни: пошаговый гайд" loading="lazy">
+<span class="cat">Меню</span>
+<h2>Как составить меню для кофейни: пошаговый гайд</h2>
+<p>Пошагово: с чего начать, как собрать структуру меню кофейни, сколько позиций нужно, как посчитать экономику каждой и не уйти в минус.</p>
+<div class="meta">7 мин чтения</div>
+</a><a class="post" href="/blog/sebestoimost-napitka/">
+<img class="thumb" src="/blog/cover-sebestoimost-napitka.jpg" alt="Как рассчитать себестоимость напитка в кофейне" loading="lazy">
+<span class="cat">Экономика</span>
+<h2>Как рассчитать себестоимость напитка в кофейне</h2>
+<p>Формула себестоимости напитка, разбор на примере капучино с цифрами, нормальный фудкост и как не уйти в минус на сезонных позициях.</p>
+<div class="meta">6 мин чтения</div>
+</a><a class="post" href="/blog/sezonnoe-menyu/">
+<img class="thumb" src="/blog/cover-sezonnoe-menyu.jpg" alt="Сезонное меню для кофейни: зачем и как обновлять" loading="lazy">
+<span class="cat">Меню</span>
+<h2>Сезонное меню для кофейни: зачем и как обновлять</h2>
+<p>Почему сезонность повышает выручку, календарь обновлений на 4 сезона, что менять и что оставлять, как тестировать новинки.</p>
+<div class="meta">5 мин чтения</div>
+</a><a class="post" href="/blog/avtorskie-napitki-idei/">
+<img class="thumb" src="/blog/cover-avtorskie-napitki-idei.jpg" alt="Идеи авторских напитков для кофейни по сезонам" loading="lazy">
+<span class="cat">Идеи</span>
+<h2>Идеи авторских напитков для кофейни по сезонам</h2>
+<p>Что делает напиток авторским, концепты под весну, лето, осень и зиму, как адаптировать идею под себестоимость и придумать название.</p>
+<div class="meta">6 мин чтения</div>
+</a><a class="post" href="/blog/tehnologicheskaya-karta/">
+<img class="thumb" src="/blog/cover-tehnologicheskaya-karta.jpg" alt="Технологическая карта на напиток: что это и как составить" loading="lazy">
+<span class="cat">Документы</span>
+<h2>Технологическая карта на напиток: что это и как составить</h2>
+<p>Зачем нужна ТТК на напиток, что в ней должно быть, чем отличается от рецепта, готовый шаблон и как внедрить в смену.</p>
+<div class="meta">5 мин чтения</div>
+</a><a class="post" href="/blog/srednij-chek-kofejni/">
+<img class="thumb" src="/blog/cover-srednij-chek-kofejni.jpg" alt="Как поднять средний чек в кофейне через меню" loading="lazy">
+<span class="cat">Экономика</span>
+<h2>Как поднять средний чек в кофейне через меню</h2>
+<p>Рабочие способы увеличить средний чек кофейни: допродажи, апгрейды, сигнатура как якорь, психология цен и сезонные новинки.</p>
+<div class="meta">6 мин чтения</div>
+</a>
+</div></div>
+<footer><div class="wrap foot">
+<div>© 2026 VLOZ · сезонное и авторское меню для кофеен · duckwin.ru</div>
+<div class="ll"><a href="https://t.me/kryanton">Telegram</a><a href="https://max.ru/u/f9LHodD0cOIvYeSSomMV090N8qMvxtqD9VBvgUE7WqJQgWUf4hlujvKCu1s">MAX</a><a href="mailto:ad@duckwin.ru">Почта</a></div>
+</div></footer>
+</body>
+</html>
