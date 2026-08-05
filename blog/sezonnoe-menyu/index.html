@@ -13,99 +13,64 @@
 <link rel="canonical" href="https://duckwin.ru/blog/sezonnoe-menyu/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#171310;--ink2:#4c453b;--soft:#857a6a;--line:#e6dcc9;--acc:#ff5a1f;--acc-soft:#ffe2d3;--acc2:#21564f;--dot:#e1d7c3;--disp:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',system-ui,sans-serif;}
+:root{--bg:#efe8d8;--card:#f6f0e1;--ink:#17130e;--ink2:#2b251c;--soft:#6b6152;--line:#c9bfa4;--acc:#b23a10;--acc-soft:#e8d5b5;--pop:#e9a13b;--disp:'Yeseva One',serif;--body:'Onest',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:28px 28px;opacity:.55;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;}
 a{color:inherit;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
-.col{max-width:720px;margin:0 auto;padding:0 24px;}
-
-header.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+.col{max-width:760px;margin:0 auto;padding:0 28px;}
+header.nav{background:#17130e;color:#efe8d8;border-bottom:none;}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px;}
+.brand{display:flex;align-items:baseline;gap:8px;font-family:var(--disp);font-weight:400;font-size:26px;text-decoration:none;color:#efe8d8;}
+.brand svg{display:none;}
 .brand .lk{display:inline-flex;align-items:baseline;gap:6px;}
-.brand .d{color:var(--ink2);font-weight:700;}
-.brand .x{color:var(--acc);font-weight:600;font-size:.82em;}
-.brand .v{color:var(--ink);font-weight:800;}
-.brand svg{width:26px;height:26px;}
-.brand svg circle{fill:none;stroke:var(--acc);stroke-width:5;}
-.nav-links{display:flex;gap:22px;font-weight:600;font-size:14.5px;}
-.nav-links a{text-decoration:none;color:var(--ink2);transition:color .2s;}
-.nav-links a:hover{color:var(--acc);}
-
-.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
-.kicker:before{content:"";width:22px;height:2px;background:var(--acc);border-radius:2px;}
-
-footer{border-top:1px solid var(--line);margin-top:70px;}
-.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:30px 0;font-size:13.5px;color:var(--soft);}
-.foot a{color:var(--ink);font-weight:600;text-decoration:none;}
+.brand .d{display:none;}
+.brand .x{display:none;}
+.brand .v{color:#efe8d8;font-weight:400;}
+.brand .v:after{content:".";color:var(--pop);}
+.nav-links{display:flex;gap:22px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;}
+.nav-links a{text-decoration:none;color:#efe8d8;border-bottom:1px solid rgba(239,232,216,.4);transition:color .2s;}
+.nav-links a:hover{color:var(--pop);}
+.kicker{display:inline-block;background:#17130e;color:#efe8d8;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;}
+footer{background:#17130e;color:#efe8d8;margin-top:70px;border-top:none;}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:20px 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#efe8d8;}
+.foot a{color:#efe8d8;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(239,232,216,.4);}
 .foot .ll{display:flex;gap:16px;}
-
-/* ===== INDEX ===== */
-.bloghero{padding:clamp(46px,7vw,88px) 0 30px;}
-.bloghero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.0;letter-spacing:-.03em;margin:14px 0 16px;}
-.bloghero p{font-size:18px;color:var(--ink2);max-width:60ch;}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:30px;}
-@media(max-width:760px){.grid{grid-template-columns:1fr;}}
-.post{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;background:linear-gradient(165deg,#fffdf8 0%,#f6efe1 100%);border:1.5px solid var(--line);border-radius:22px;padding:26px;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s;}
-.post:hover{transform:translateY(-5px);box-shadow:0 24px 50px -34px rgba(40,20,8,.35);border-color:var(--acc);}
-.post>*{position:relative;z-index:1;}
-.post .rings{position:absolute;z-index:0;right:-52px;bottom:-52px;width:200px;height:200px;opacity:.08;pointer-events:none;transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1);}
-.post .rings circle{fill:none;stroke:var(--acc);stroke-width:2.5;}
-.post:hover .rings{opacity:.2;transform:rotate(-24deg) scale(1.07);}
-.post .idx{position:absolute;z-index:0;left:16px;bottom:-6px;font-family:var(--disp);font-weight:800;font-size:108px;line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--acc);opacity:.07;pointer-events:none;transition:opacity .45s ease;}
-.post:hover .idx{opacity:.15;}
-.post .cat{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);}
-.post .cat:before{content:"✦";color:var(--acc);font-size:11px;}
-.post h2{font-family:var(--disp);font-weight:700;font-size:23px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 9px;}
-.post p{font-size:14.5px;color:var(--ink2);flex:1;}
-.post .meta{margin-top:16px;font-size:12.5px;color:var(--soft);font-weight:600;}
-.post .cardfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
-.post .cardfoot .meta{margin-top:0;}
-.post .rd{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13px;color:var(--acc);}
-.post .rd svg{width:15px;height:15px;transition:transform .3s;}
-.post:hover .rd svg{transform:translateX(4px);}
-
-/* ===== ARTICLE ===== */
-.crumb{padding:26px 0 0;font-size:13px;color:var(--soft);}
+.crumb{padding:26px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);}
 .crumb a{color:var(--soft);text-decoration:none;}.crumb a:hover{color:var(--acc);}
 article{padding:18px 0 0;}
-article h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.6vw,50px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 16px;}
-.amETA{display:flex;gap:16px;font-size:13px;color:var(--soft);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;}
-article h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.15;letter-spacing:-.01em;margin:38px 0 12px;}
-article h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:24px 0 8px;}
-article p{font-size:17px;color:#2b2620;margin:0 0 16px;}
+article h1{font-family:var(--disp);font-weight:400;font-size:clamp(30px,4.4vw,48px);line-height:1.08;margin:18px 0 18px;text-shadow:3px 3px 0 var(--pop);}
+.amETA{display:flex;gap:16px;font-family:var(--mono);font-size:12px;color:var(--soft);font-weight:500;border-bottom:2.5px solid var(--ink);padding-bottom:20px;margin-bottom:30px;}
+article h2{font-family:var(--disp);font-weight:400;font-size:clamp(22px,2.8vw,29px);line-height:1.15;margin:40px 0 12px;border-top:2.5px solid var(--ink);padding-top:22px;}
+article h3{font-family:var(--body);font-weight:700;font-size:18px;margin:24px 0 8px;}
+article p{font-size:16.5px;color:var(--ink2);margin:0 0 16px;}
 article ul,article ol{margin:0 0 18px;padding-left:22px;}
-article li{font-size:17px;color:#2b2620;margin:7px 0;}
+article li{font-size:16.5px;color:var(--ink2);margin:7px 0;}
 article strong{color:var(--ink);}
 article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
-.lead{font-size:20px!important;color:var(--ink2)!important;}
-.callout{background:var(--acc-soft);border-radius:18px;padding:22px 24px;margin:26px 0;}
-.callout b{font-family:var(--disp);}
+.lead{font-size:19.5px!important;color:var(--ink)!important;font-weight:500;}
+.callout{background:var(--acc-soft);border:2.5px solid var(--ink);border-radius:0;padding:22px 24px;margin:26px 0;}
+.callout b{font-family:var(--body);font-weight:700;}
 .callout ul{margin:10px 0 0;}
-.formula{background:var(--ink);color:#f3ede2;border-radius:16px;padding:20px 24px;margin:22px 0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:15px;line-height:1.7;overflow-x:auto;}
-.formula .v{color:#ffb38a;}
-.endcta{background:var(--acc);color:#2a0e02;border-radius:26px;padding:34px;margin:46px 0 0;text-align:center;}
-.endcta h3{font-family:var(--disp);font-weight:800;font-size:26px;margin-bottom:8px;}
-.endcta p{font-size:15.5px;margin-bottom:18px;opacity:.85;}
-.endcta .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);font-weight:700;padding:13px 26px;border-radius:99px;text-decoration:none;transition:transform .2s;}
-.endcta .btn:hover{transform:translateY(-2px);}
-.more{margin-top:30px;}
+.formula{background:var(--ink);color:#efe8d8;border-radius:0;padding:22px 26px;margin:24px 0;font-family:var(--mono);font-size:14px;line-height:1.75;overflow-x:auto;}
+.formula .v{color:var(--pop);font-weight:700;}
+.endcta{background:var(--acc);color:var(--bg);border-radius:0;border:none;padding:34px;margin:48px 0 0;text-align:left;}
+.endcta h3{font-family:var(--disp);font-weight:400;font-size:26px;margin:0 0 8px;}
+.endcta p{font-size:15px;margin-bottom:18px;opacity:.9;color:var(--bg);}
+.endcta .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:14px 24px;border-radius:0;text-decoration:none;}
+.endcta .btn:hover{background:#efe8d8;color:#17130e;}
+.more{margin-top:34px;}
 .more .kicker{margin-bottom:14px;}
-.more a{display:block;text-decoration:none;border-top:1px solid var(--line);padding:14px 0;font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink);transition:color .2s;}
+.more a{display:block;text-decoration:none;border-top:2px solid var(--ink);padding:14px 0;font-family:var(--disp);font-weight:400;font-size:18px;color:var(--ink);transition:color .2s;}
 .more a:hover{color:var(--acc);}
-.more a span{color:var(--soft);font-family:var(--body);font-weight:600;font-size:13px;display:block;}
-
-.cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;border:1.5px solid var(--line);margin:8px 0 30px;display:block;}
-.post .thumb{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;margin-bottom:16px;display:block;}
-.idxhero{width:100%;aspect-ratio:24/9;object-fit:cover;border-radius:22px;border:1.5px solid var(--line);margin-top:26px;display:block;}
-.fig{margin:32px 0;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:24px 22px 18px;}
+.more a span{color:var(--soft);font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-top:4px;}
+.cover{display:none;}
+.fig{margin:32px 0;background:var(--card);border:2.5px solid var(--ink);border-radius:0;box-shadow:7px 7px 0 var(--acc);padding:24px 22px 18px;}
 .fig svg{width:100%;height:auto;display:block;}
-.fig figcaption{font-size:13px;color:var(--soft);margin-top:14px;text-align:center;line-height:1.4;}
+.fig figcaption{font-family:var(--mono);font-size:11.5px;color:var(--soft);margin-top:14px;text-align:left;line-height:1.5;}
 </style>
 <script type="application/ld+json">
 {
@@ -184,23 +149,23 @@ article a.inl{color:var(--acc);font-weight:600;text-decoration:underline;text-un
 <li><strong>Осень</strong> — пряные и согревающие: тыква, груша, корица, карамель. Самый «продающий» сезон новинок.</li>
 <li><strong>Зима</strong> — десертные и согревающие: какао, пряный латте, имбирь, цитрус.</li>
 </ul>
-<figure class="fig"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" font-family="Hanken Grotesk, sans-serif">
-<path d="M230 210 L230 60 A150 150 0 0 1 380 210 Z" fill="rgba(242,160,12,.18)" stroke="#fffdf8" stroke-width="3"/>
-<path d="M230 210 L380 210 A150 150 0 0 1 230 360 Z" fill="rgba(255,90,31,.16)" stroke="#fffdf8" stroke-width="3"/>
-<path d="M230 210 L230 360 A150 150 0 0 1 80 210 Z" fill="rgba(47,108,240,.15)" stroke="#fffdf8" stroke-width="3"/>
-<path d="M230 210 L80 210 A150 150 0 0 1 230 60 Z" fill="rgba(27,163,91,.16)" stroke="#fffdf8" stroke-width="3"/>
-<text x="293" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#b9780a" font-family="Bricolage Grotesque, sans-serif">Лето</text>
-<text x="293" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#ff5a1f" font-family="Bricolage Grotesque, sans-serif">Осень</text>
-<text x="166" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#2f6cf0" font-family="Bricolage Grotesque, sans-serif">Зима</text>
-<text x="166" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#1ba35b" font-family="Bricolage Grotesque, sans-serif">Весна</text>
-<circle cx="230" cy="210" r="52" fill="#fffdf8" stroke="#e6dcc9" stroke-width="1.5"/>
-<text x="230" y="205" text-anchor="middle" font-weight="800" font-size="18" fill="#171310" font-family="Bricolage Grotesque, sans-serif">4×</text>
-<text x="230" y="224" text-anchor="middle" font-size="10.5" fill="#857a6a">в год</text>
-<g font-family="Hanken Grotesk, sans-serif">
-<g transform="translate(440,118)"><circle cx="6" cy="-4" r="6" fill="#1ba35b"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Весна</text><text x="22" y="20" font-size="13" fill="#857a6a">цветочное, ягодное, матча</text></g>
-<g transform="translate(440,188)"><circle cx="6" cy="-4" r="6" fill="#f2a00c"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Лето</text><text x="22" y="20" font-size="13" fill="#857a6a">колд брю, тоники, фраппе</text></g>
-<g transform="translate(440,258)"><circle cx="6" cy="-4" r="6" fill="#ff5a1f"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Осень</text><text x="22" y="20" font-size="13" fill="#857a6a">тыква, корица, карамель</text></g>
-<g transform="translate(440,328)"><circle cx="6" cy="-4" r="6" fill="#2f6cf0"/><text x="22" y="0" font-weight="700" font-size="15" fill="#171310">Зима</text><text x="22" y="20" font-size="13" fill="#857a6a">какао, имбирь, цитрус</text></g>
+<figure class="fig"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" font-family="Onest, sans-serif">
+<path d="M230 210 L230 60 A150 150 0 0 1 380 210 Z" fill="rgba(242,160,12,.18)" stroke="#f6f0e1" stroke-width="3"/>
+<path d="M230 210 L380 210 A150 150 0 0 1 230 360 Z" fill="rgba(255,90,31,.16)" stroke="#f6f0e1" stroke-width="3"/>
+<path d="M230 210 L230 360 A150 150 0 0 1 80 210 Z" fill="rgba(47,108,240,.15)" stroke="#f6f0e1" stroke-width="3"/>
+<path d="M230 210 L80 210 A150 150 0 0 1 230 60 Z" fill="rgba(27,163,91,.16)" stroke="#f6f0e1" stroke-width="3"/>
+<text x="293" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#b9780a" font-family="Yeseva One, serif">Лето</text>
+<text x="293" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#b23a10" font-family="Yeseva One, serif">Осень</text>
+<text x="166" y="278" text-anchor="middle" font-weight="700" font-size="15" fill="#2f6cf0" font-family="Yeseva One, serif">Зима</text>
+<text x="166" y="150" text-anchor="middle" font-weight="700" font-size="15" fill="#1ba35b" font-family="Yeseva One, serif">Весна</text>
+<circle cx="230" cy="210" r="52" fill="#f6f0e1" stroke="#c9bfa4" stroke-width="1.5"/>
+<text x="230" y="205" text-anchor="middle" font-weight="800" font-size="18" fill="#17130e" font-family="Yeseva One, serif">4×</text>
+<text x="230" y="224" text-anchor="middle" font-size="10.5" fill="#6b6152">в год</text>
+<g font-family="Onest, sans-serif">
+<g transform="translate(440,118)"><circle cx="6" cy="-4" r="6" fill="#1ba35b"/><text x="22" y="0" font-weight="700" font-size="15" fill="#17130e">Весна</text><text x="22" y="20" font-size="13" fill="#6b6152">цветочное, ягодное, матча</text></g>
+<g transform="translate(440,188)"><circle cx="6" cy="-4" r="6" fill="#f2a00c"/><text x="22" y="0" font-weight="700" font-size="15" fill="#17130e">Лето</text><text x="22" y="20" font-size="13" fill="#6b6152">колд брю, тоники, фраппе</text></g>
+<g transform="translate(440,258)"><circle cx="6" cy="-4" r="6" fill="#b23a10"/><text x="22" y="0" font-weight="700" font-size="15" fill="#17130e">Осень</text><text x="22" y="20" font-size="13" fill="#6b6152">тыква, корица, карамель</text></g>
+<g transform="translate(440,328)"><circle cx="6" cy="-4" r="6" fill="#2f6cf0"/><text x="22" y="0" font-weight="700" font-size="15" fill="#17130e">Зима</text><text x="22" y="20" font-size="13" fill="#6b6152">какао, имбирь, цитрус</text></g>
 </g></svg><figcaption>Сезонный круг: 4 обновления в год под вкусовые профили каждого сезона.</figcaption></figure>
 <p>Оптимальная частота — 4 обновления в год, по числу сезонов. Можно добавить точечные новинки под праздники.</p>
 
